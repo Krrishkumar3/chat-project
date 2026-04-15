@@ -64,7 +64,7 @@ function App() {
               }
             }));
 
-            inputRef.current.value = "";
+            if (inputRef.current) inputRef.current.value = "";
           }}
           className='bg-purple-600 text-white p-4'
         >
