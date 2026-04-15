@@ -1,10 +1,12 @@
 {
   "name": "week-17-chat-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "WebSocket chat backend",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "tsc -b && node ./dist/index.js"
+    "dev": "tsc -b && node ./dist/index.js",
+    "build": "tsc -b",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",

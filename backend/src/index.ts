@@ -1,6 +1,7 @@
 import { WebSocketServer, WebSocket } from "ws";
 
-const wss = new WebSocketServer({ port: 8081 });
+const port = parseInt(process.env.PORT || "8081");
+const wss = new WebSocketServer({ port });
 
 interface User {
   socket: WebSocket;
@@ -53,4 +54,4 @@ wss.on("connection", (socket: WebSocket) => {
   });
 });
 
-console.log("WebSocket server running on ws://localhost:8081");
+console.log(`WebSocket server running on port ${port}`);

@@ -7,7 +7,8 @@ function App() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8081");
+    const wsUrl = import.meta.env.VITE_WS_URL || "ws://localhost:8081";
+    const ws = new WebSocket(wsUrl);
 
     ws.onmessage = (event) => {
       setMessages(m => [...m, event.data]);
