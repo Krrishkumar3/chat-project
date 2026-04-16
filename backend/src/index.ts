@@ -1,7 +1,16 @@
 import { WebSocketServer, WebSocket } from "ws";
+import { createServer } from "http";
 
 const port = parseInt(process.env.PORT || "8081");
-const wss = new WebSocketServer({ port });
+
+// HTTP server for Render health checks
+const server = createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Chat WebSocket server is running");
+});
+
+// Attach WebSocket to HTTP server
+const wss = new WebSocketServer({ server });
 
 interface User {
   socket: WebSocket;
@@ -54,4 +63,6 @@ wss.on("connection", (socket: WebSocket) => {
   });
 });
 
-console.log(`WebSocket server running on port ${port}`);
+server.listen(port, () => {
+  console.log(`WebSocket server running on port ${port}`);
+});
